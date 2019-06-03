@@ -26,16 +26,29 @@
 
 	function poisonousPlants(p) {
 		
+		var days, left, right;
 		console.log('Start Value:', p);
-		var days = 0;
+		days = 0;
 
 		//compare each plant right to left
 		for(var i = 0; i < p.length; i++) {
-			if(p[p.length-i-2]) {
-				console.log(p[p.length-i-2], '<=', p[p.length-i-1]);
+
+			left = p[p.length-i-2];
+			right = p[p.length-i-1];
+
+			if(!left || !right) {
+				console.log('Undefined');
+				break;
+			}
+
+			console.log(left, '<=', right);
+			if(left <= right) {
+				console.log('Remove', right);
 			}
 			
 		}
+
+		console.log('End Value', p);
 
 		return days;
 		
