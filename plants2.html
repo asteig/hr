@@ -1,0 +1,49 @@
+<DOCTYPE html>
+<html>
+<head>
+	<title>plants</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+
+<script>
+	
+	test1 = {
+		input: [6,5,8,4,7,10,9],
+		expected: 2
+	}
+
+	test2 = {
+		input: [3,2,5,4,1],
+		expected: 2
+	}
+
+	test3 = {
+		input: [4,3,7,5,6,4,2,1],
+		expected: 3
+	}
+
+
+	function poisonousPlants(p) {
+		
+		console.log('Start Value:', p);
+		var days = 0;
+
+		//compare each plant right to left
+		for(var i = 0; i < p.length; i++) {
+			if(p[p.length-i-2]) {
+				console.log(p[p.length-i-2], '<=', p[p.length-i-1]);
+			}
+			
+		}
+
+		return days;
+		
+	}
+
+	poisonousPlants(test1.input);
+
+</script>
+
+</body>
+</html>
