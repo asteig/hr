@@ -37,13 +37,13 @@
 			right = p[p.length-i-1];
 
 			if(!left || !right) {
-				console.log('Undefined');
 				break;
 			}
 
 			console.log(left, '<=', right);
 			if(left <= right) {
-				console.log('Remove', right);
+				//kill plant!
+				p[p.length-i-1] = 0;
 			}
 			
 		}
