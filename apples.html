@@ -9,26 +9,43 @@
 
 <script>
 function countApplesAndOranges(s, t, a, b, apples, oranges) {
-    console.log('start point of Sam\'s house location', s);
-    console.log('end point of Sam\'s house location', t);
-    console.log('apple tree location', a);
-    console.log('orange tree location', b);
-    console.log('apples', apples);
-    console.log('oranges', oranges);
-
-    for(apple in apples) {
-    	console.log('apple:',apple);
+    
+    let appleHits = 0;
+    for (var i = 0; i < apples.length; i++) {
+        const position = a + apples[i];
+        if (position >= s && position <= t) { 
+            appleHits = appleHits + 1;
+        }
     }
 
-    for(orange in oranges) {
-    	console.log('orange:');
+    let orangeHits = 0;
+    for (var i = 0; i < oranges.length; i++) {
+        const position = b + oranges[i];
+        if (position >= s && position <= t) {
+            orangeHits = orangeHits + 1;
+        }
     }
 
+    console.log(appleHits);
+    console.log(orangeHits);
 
 }
-
-
-printTable(2);
+//Test Case 0
+//expected: 1 / 1
+console.log('Test 1:');
+console.log('expected: 1/1');
+countApplesAndOranges(7, 11, 5, 15, [-2,2,1],[5,-6]);
+console.log('------------------');
+//Test Case 1
+//expected: 0 / 0
+console.log('Test 1:');
+console.log('expected: 0/0');
+countApplesAndOranges(2, 3, 1, 5, [-2], [-1]);
+console.log('------------------');
+//Test Case 2
+//expected: 1 / 1
+//countApplesAndOranges(2, 3, 1, 5, [2], [-2]);
+//Test Case 3
 </script>
 
 
