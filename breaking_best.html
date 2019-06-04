@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>breaking_best</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+
+
+<script>
+
+function breakingRecords(scores) {
+	let min = scores[0];
+	let max = scores[0];
+
+	let minChanges = 0;
+	let maxChanges = 0;
+
+	for(var i = 0; i < scores.length; i++) {
+		if(scores[i] < min) {
+			min = scores[i];
+			minChanges = minChanges + 1;
+		}
+		if(scores[i] > max) {
+			max = scores[i];
+			maxChanges = maxChanges + 1;
+		}
+
+	}
+
+	console.log('output', [minChanges, maxChanges]);
+
+}
+
+console.log('Test 0');
+console.log('expected: [2, 4]');
+test0 = [ 10, 5, 20, 20, 4, 5, 2, 25, 1 ];
+console.log(test0);
+breakingRecords(test0);
+
+console.log('Test 1');
+console.log('expected: [4, 0]');
+test1 = [ 3, 4, 21, 36, 10, 28, 35, 5, 24, 42 ];
+console.log(test1);
+breakingRecords(test1);
+
+</script>
+
+
+</body>
+</html>
