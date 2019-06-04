@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>30 operators</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+
+
+<script>
+	const meal_cost = 15.50;
+	const tip_percent = 15;
+	const tax_percent = 10;
+
+	const expected = 19.50;
+
+
+	const tax_cost = Math.round(meal_cost * (tax_percent/100), 2);
+	const tip_cost = Math.round(meal_cost * (tip_percent/100), 2);
+
+	const total = Math.round(meal_cost + tax_cost + tip_cost, 0);
+
+	console.log(total);
+
+</script>
+
+
+</body>
+</html>
