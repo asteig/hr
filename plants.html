@@ -1,0 +1,79 @@
+<DOCTYPE html>
+<html>
+<head>
+	<title>plants</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+
+<script>
+	
+	test1 = {
+		input: [6,5,8,4,7,10,9],
+		expected: 2
+	}
+
+	test2 = {
+		input: [3,2,5,4,1],
+		expected: 2
+	}
+
+	test3 = {
+		input: [4,3,7,5,6,4,2,1],
+		expected: 3
+	}
+
+
+	function poisonousPlants(p) {
+		
+		let allAlive = false;
+		let days = 0;
+		console.log('****************************');
+		console.log('STARTING VALUES:', p);
+
+		//reference array
+		const r = p.slice();
+		let length = 0;
+
+		while(!allAlive) {
+			console.log('+++++++++++++++++');
+			console.log('Day ', days);
+			
+			//compare each pair front to back
+			for(var i = 0; i < p.length; i++) {
+
+				console.log('for loop p length', p.length);
+
+				allAlive = true;
+
+				let compare = null;
+
+				console.log(`${p[p.length-i-1]} <= ${p[p.length-i]}`);
+
+				//remove items greater than their left neighbor
+				if(p[p.length-i-1] < p[p.length-i]) {
+					console.log('Remove', p[p.length-i]);
+					p.splice(p.length-i, 1);
+					allAlive = false;
+					days = days + 1;
+				}
+
+
+			}
+
+			console.log('+++++++++++++++++');
+			return days;
+			
+		}
+
+		return days;
+
+		
+	}
+
+	poisonousPlants(test1.input);
+
+</script>
+
+</body>
+</html>
