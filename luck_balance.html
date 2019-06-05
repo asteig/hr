@@ -1,0 +1,74 @@
+<DOCTYPE html>
+<html>
+<head>
+	<title>luck balance</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+
+<script>
+
+	function luckBalance(k, contests) {
+
+		//get num importants
+		var nImportant = 0;
+
+		for(var i = 0; i < contests.length; i++) {
+			if(contests[i][1]) {
+				nImportant = nImportant + 1;
+			}
+		}
+
+		console.log('nImportant', nImportant);
+
+		var mustWins = nImportant - k;
+
+		console.log('must win', mustWins);
+
+		//find lowest luck k times
+		for(var x = 0; x < mustWins; x++) {
+
+			var min = 99;
+			var minIndex = null;
+
+
+			//find the lowest
+			for(var index = 0; index < contests.length; index++) {
+				if(contests[index][0] < min && contests[index][1]) {
+					min = contests[index][0];
+					minIndex = index;
+				}
+			}
+
+			//remove lowest by index
+			contests.splice(minIndex, 1);
+
+		} 
+
+		//add up remaining luck
+		luckTotal = 0;
+		console.log('length:', contests.length);
+		for(var i = 0; i < contests.length; i++) {
+			luckTotal = luckTotal + contests[i][0];
+		}
+
+		console.log('Luck:', luckTotal - 1);
+		
+	}
+
+	//expected: 29
+	//console.log('Test 0');
+	//luckBalance(3, [ [ 5, 1 ], [ 2, 1 ], [ 1, 1 ], [ 8, 1 ], [ 10, 0 ], [ 5, 0 ] ]);
+
+	console.log('Test 1');
+	//expected: 42
+	luckBalance(5, [ [ 13, 1 ], [ 10, 1 ], [ 9, 1 ], [ 8, 1 ], [ 13, 1 ], [ 12, 1 ], [ 18, 1 ], [ 13, 1 ] ]);
+
+
+
+
+
+</script>
+
+</body>
+</html>
