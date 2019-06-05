@@ -10,63 +10,46 @@
 
 	function luckBalance(k, contests) {
 
-		//get num importants
-		var nImportant = 0;
+	    let maxLuck = 0;
+	    let importantScores = [];
 
-		for(var i = 0; i < contests.length; i++) {
-			if(contests[i][1]) {
-				nImportant = nImportant + 1;
-			}
-		}
+	    for (var i = 0; i < contests.length; i++) {
+	        maxLuck = maxLuck + contests[i][0];
+	        if (contests[i][1]) {
+	            importantScores.push(contests[i][0])
+	        }
+	    }
 
-		console.log('nImportant', nImportant);
+	    importantScores = importantScores.sort(function (a, b) { return a - b });
 
-		var mustWins = nImportant - k;
+	    let scoresToRemove = importantScores.slice(0, importantScores.length - k);
 
-		console.log('must win', mustWins);
+	    let total = maxLuck;
 
-		//find lowest luck k times
-		for(var x = 0; x < mustWins; x++) {
+	    for (var i = 0; i < scoresToRemove.length; i++) {
+	        total = total - scoresToRemove[i];
+	        total = total - scoresToRemove[i];
+	    }
 
-			var min = 99;
-			var minIndex = null;
+	    return total;
 
 
-			//find the lowest
-			for(var index = 0; index < contests.length; index++) {
-				if(contests[index][0] < min && contests[index][1]) {
-					min = contests[index][0];
-					minIndex = index;
-				}
-			}
-
-			//remove lowest by index
-			contests.splice(minIndex, 1);
-
-		} 
-
-		//add up remaining luck
-		luckTotal = 0;
-		console.log('length:', contests.length);
-		for(var i = 0; i < contests.length; i++) {
-			luckTotal = luckTotal + contests[i][0];
-		}
-
-		console.log('Luck:', luckTotal - 1);
-		
 	}
 
 	//expected: 29
 	//console.log('Test 0');
 	//luckBalance(3, [ [ 5, 1 ], [ 2, 1 ], [ 1, 1 ], [ 8, 1 ], [ 10, 0 ], [ 5, 0 ] ]);
 
-	console.log('Test 1');
+	//console.log('Test 1');
 	//expected: 42
-	luckBalance(5, [ [ 13, 1 ], [ 10, 1 ], [ 9, 1 ], [ 8, 1 ], [ 13, 1 ], [ 12, 1 ], [ 18, 1 ], [ 13, 1 ] ]);
+	//luckBalance(5, [ [ 13, 1 ], [ 10, 1 ], [ 9, 1 ], [ 8, 1 ], [ 13, 1 ], [ 12, 1 ], [ 18, 1 ], [ 13, 1 ] ]);
 
 
+	console.log('Test 8');
+	//expected: 10069
+	luckBalance(58,[[105, 0],[103, 0],[106, 1],[106, 1],[103, 0],[103, 1],[105, 1],[106, 1],[105, 0],[104, 0],[103, 0],[102, 0],[104, 0],[105, 0],[104, 0],[102, 1],[104, 0],[106, 1],[104, 1],[101, 1],[105, 0],[103, 0],[104, 0],[106, 0],[102, 1],[103, 0],[102, 0],[103, 1],[106, 0],[104, 1],[101, 1],[101, 1],[106, 0],[103, 1],[103, 0],[104, 1],[101, 0],[105, 1],[105, 0],[104, 1],[105, 0],[106, 0],[104, 0],[105, 0],[101, 1],[106, 1],[105, 0],[103, 0],[104, 1],[101, 1],[106, 1],[104, 0],[106, 1],[105, 0],[103, 1],[101, 0],[103, 0],[101, 0],[105, 1],[104, 1],[104, 1],[105, 1],[105, 1],[103, 0],[101, 0],[104, 1],[106, 1],[105, 1],[105, 0],[106, 1],[104, 1],[105, 1],[103, 1],[102, 1],[106, 0],[101, 0],[105, 1],[104, 1],[103, 1],[106, 1],[101, 0],[106, 1],[103, 0],[106, 1],[102, 1],[103, 0],[101, 1],[102, 1],[101, 1],[104, 0],[106, 0],[102, 0],[104, 0],[105, 0],[105, 0],[102, 1],[103, 1]])
 
-
+	//console.log([[97, 58],[105, 0],[103, 0],[106, 1],[106, 1],[103, 0],[103, 1],[105, 1],[106, 1],[105, 0],[104, 0],[103, 0],[102, 0],[104, 0],[105, 0],[104, 0],[102, 1],[104, 0],[106, 1],[104, 1],[101, 1],[105, 0],[103, 0],[104, 0],[106, 0],[102, 1],[103, 0],[102, 0],[103, 1],[106, 0],[104, 1],[101, 1],[101, 1],[106, 0],[103, 1],[103, 0],[104, 1],[101, 0],[105, 1],[105, 0],[104, 1],[105, 0],[106, 0],[104, 0],[105, 0],[101, 1],[106, 1],[105, 0],[103, 0],[104, 1],[101, 1],[106, 1],[104, 0],[106, 1],[105, 0],[103, 1],[101, 0],[103, 0],[101, 0],[105, 1],[104, 1],[104, 1],[105, 1],[105, 1],[103, 0],[101, 0],[104, 1],[106, 1],[105, 1],[105, 0],[106, 1],[104, 1],[105, 1],[103, 1],[102, 1],[106, 0],[101, 0],[105, 1],[104, 1],[103, 1],[106, 1],[101, 0],[106, 1],[103, 0],[106, 1],[102, 1],[103, 0],[101, 1],[102, 1],[101, 1],[104, 0],[106, 0],[102, 0],[104, 0],[105, 0],[105, 0],[102, 1],[103, 1]].length);
 
 </script>
 
