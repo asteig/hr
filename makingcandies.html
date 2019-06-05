@@ -1,0 +1,59 @@
+<DOCTYPE html>
+<html>
+<head>
+	<title>making candies</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+
+<script>
+
+
+	function minimumPasses(m, w, p, n) {
+		//m: starting number of machines
+		//w: starting number of workers
+		//p: cost of machine/worker
+		//n: number of candies to produce
+
+		const goal = n;
+		const unitCost = p;
+		
+		let passes = 0;
+
+		let nCandies = 0;
+		let nMachines = m;
+		let nWorkers = w;
+
+		console.log('We need', goal, 'candies');
+
+		//each pass
+		while(nCandies < goal) {
+
+			console.log('PASS', passes);
+			
+			//make candies for this pass
+			newCandies = nMachines * nWorkers;
+			nCandies = nCandies + newCandies;
+			console.log('Made', newCandies, 'candies');
+			console.log('Total candies:', nCandies);
+
+			//buy as many (machine + worker)'s as possible
+			let maxUnits = Math.floor(nCandies / (2 * unitCost));
+
+			nCandies = nCandies - (maxUnits * unitCost);
+			nWorkers = nWorkers + maxUnits;
+			nMachines = nMachines + maxUnits;
+
+			passes = passes + 1;
+		} 
+
+		return passes; 
+
+	}
+
+	minimumPasses(3, 1, 2, 12);
+
+</script>
+
+</body>
+</html>
