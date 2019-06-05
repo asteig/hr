@@ -18,24 +18,26 @@
 		const goal = n;
 		const unitCost = p;
 		
-		let passes = 0;
+		let passes = 1;
 
 		let nCandies = 0;
 		let nMachines = m;
 		let nWorkers = w;
 
-		console.log('We need', goal, 'candies');
+		let neededMachines = 0;
+		let neededWorkers = 0;
 
 		//each pass
-		while(nCandies < goal) {
-
-			console.log('PASS', passes);
+		while(nCandies <= goal) {
 			
 			//make candies for this pass
 			newCandies = nMachines * nWorkers;
 			nCandies = nCandies + newCandies;
-			console.log('Made', newCandies, 'candies');
-			console.log('Total candies:', nCandies);
+
+			//we just met our goal / return answer
+			if(nCandies == goal || nCandies > goal) {
+				return passes;
+			}
 
 			//buy as many (machine + worker)'s as possible
 			let maxUnits = Math.floor(nCandies / (2 * unitCost));
@@ -45,13 +47,24 @@
 			nMachines = nMachines + maxUnits;
 
 			passes = passes + 1;
+
 		} 
 
 		return passes; 
 
 	}
 
+	//expected: 3
+	console.log('expected: 3');
 	minimumPasses(3, 1, 2, 12);
+
+	//expected: 16
+	console.log('expected: 16');
+	minimumPasses(1, 1, 6, 45);
+
+	//expected: 1
+	console.log('expected: 1');
+	minimumPasses(5184889632, 5184889632, 20, 10000);
 
 </script>
 
