@@ -13,7 +13,7 @@
 	// See challenge for params: https://www.hackerrank.com/challenges/uk-and-us/problem
 	function countVariants(params) {
 		
-		var nLines, lines, needles;
+		var nLines, lines, americanWords, britishWords;
 		
 		nLines = params.shift();
 		lines = params.splice(0, nLines);
@@ -27,6 +27,12 @@
 		for(var i = 0; i < americanWords.length; i++) {
 			//get British word
 			britishWords.push(americanWords[i].slice(0, americanWords[i].length - 3) + 'ise');
+		}
+
+		for(var i = 0; i < americanWords.length; i++) {
+			var wordMatches = 0;
+
+			console.log('How many times does '+americanWords[i]+' or '+britishWords[i]+' appear?');
 		}
 
 	}
