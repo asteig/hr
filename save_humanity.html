@@ -8,7 +8,33 @@
 
 <script>
 	function virusIndices(p, v) {
-			console.log(p, v);
+			let patient = p;
+			const virus = v;
+
+			//get all variants of the needle
+			//one mistake allowed
+			let mistakes = 0;
+			let matches = 0;
+			while(patient.length > 0) {
+
+				for(var i = 0; i < virus.length; i++) {
+					if(virus[i] !== patient[i]) {
+						mistakes = mistakes + 1;
+					}
+				}
+
+				if(mistakes < 1) {
+					matches = matches + 1;
+				}
+
+				patient = patient.slice(1);
+				mistakes = 0;
+				
+			}
+
+			console.log('here');
+			return matches;
+
 	}
 
 	//expected: 2
