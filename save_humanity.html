@@ -10,35 +10,54 @@
 	function virusIndices(p, v) {
 			let patient = p;
 			const virus = v;
+			const indices = [];
 
 			//get all variants of the needle
 			//one mistake allowed
 			let mistakes = 0;
-			let matches = 0;
+			let index = -1;
 			while(patient.length > 0) {
 
+				console.log('check', patient, 'for', virus);
+
+				//check start of patient for virus
 				for(var i = 0; i < virus.length; i++) {
-					if(virus[i] !== patient[i]) {
+					console.log(virus[i], 'to', patient[i]);
+					if(patient[i] && virus[i] != patient[i]) {
 						mistakes = mistakes + 1;
 					}
 				}
 
 				if(mistakes < 1) {
-					matches = matches + 1;
+					console.log('***this was a match');
+					indices.push(index);
 				}
 
 				patient = patient.slice(1);
+				index = index + 1;
 				mistakes = 0;
 				
 			}
 
-			console.log('here');
-			return matches;
+			console.log(indices);
+			if(indices.length == 0) {
+				return 'No Match!';
+			}
+
+			console.log(indices);
+			return indices.sort((a, b) => a < b).join(' ');
 
 	}
 
-	//expected: 2
-	virusIndices('abbab', 'ba');
+	let result = virusIndices('abbab', 'ba');
+	//console.log(result);
+
+	result = virusIndices('cgatcg', 'gc');
+	console.log(result);
+	//console.log( virusIndices('hello', 'world') );
+
+	result = virusIndices('aardvark', 'ab');
+	console.log(result);
 </script>
 
 </body>
