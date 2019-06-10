@@ -14,9 +14,8 @@
 
 			let index = 0;
 			let mistakes = 0; 
-			while(patient.length > 0) {
+			while(patient.length > virus.length - 1) {
 
-				//
 				mistakes = 0;
 				
 				//check start of patient for virus
@@ -54,27 +53,38 @@
 	}
 
 	
-	const test0a = virusIndices('aabaa', 'aaaab');
-	const test0b = virusIndices('bbabbaaaabababbaaba', 'aaababbaaaaaa');
-	const test0c = virusIndices('babbbabaa', 'bbaba');
-	const test0d = virusIndices('baaaaababbaa', 'abbab');
-	const test0e = virusIndices('ababbaabbbabaababaaaabaa', 'aaabaababbbabbabbaababbb');
-	const test0f = virusIndices('aaaabaaaaabbaaaa', 'aa');
-	const test0g = virusIndices('abababaaaaabaaaaba', 'ababba');
-	const test0h = virusIndices('aabbbababaabaaa', 'baabababbaaaaa');
-	const test0i = virusIndices('bababa', 'a');
-	const test0j = virusIndices('bbbbabaaababaabbaab', 'baaaaab');
+	// const test0a = virusIndices('aabaa', 'aaaab');
+	// const test0b = virusIndices('bbabbaaaabababbaaba', 'aaababbaaaaaa');
+	// const test0c = virusIndices('babbbabaa', 'bbaba');
+	// const test0d = virusIndices('baaaaababbaa', 'abbab');
+	// const test0e = virusIndices('ababbaabbbabaababaaaabaa', 'aaabaababbbabbabbaababbb');
+	// const test0f = virusIndices('aaaabaaaaabbaaaa', 'aa');
+	// const test0g = virusIndices('abababaaaaabaaaaba', 'ababba');
+	// const test0h = virusIndices('aabbbababaabaaa', 'baabababbaaaaa');
+	// const test0i = virusIndices('bababa', 'a');
+	// const test0j = virusIndices('bbbbabaaababaabbaab', 'baaaaab');
 
-	console.log(test0a);
-	console.log(test0b);
-	console.log(test0c);
-	console.log(test0d);
-	console.log(test0e);
-	console.log(test0f);
-	console.log(test0g);
-	console.log(test0h);
-	console.log(test0i);
-	console.log(test0j);
+	// console.log(test0a);
+	// console.log(test0b);
+	// console.log(test0c);
+	// console.log(test0d);
+	// console.log(test0e);
+	// console.log(test0f);
+	// console.log(test0g);
+	// console.log(test0h);
+	// console.log(test0i);
+	// console.log(test0j);
+
+
+	const practiceA = virusIndices('abbab', 'ba');
+	const practiceB = virusIndices('hello', 'world');
+	const practiceC = virusIndices('banana', 'nan');
+
+	console.log(practiceA);
+	console.log(practiceB);
+	console.log(practiceC);
+
+	
 
 
 </script>
