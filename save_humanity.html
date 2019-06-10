@@ -12,52 +12,71 @@
 			const virus = v;
 			const indices = [];
 
-			//get all variants of the needle
-			//one mistake allowed
-			let mistakes = 0;
-			let index = -1;
+			let index = 0;
+			let mistakes = 0; 
 			while(patient.length > 0) {
 
-				console.log('check', patient, 'for', virus);
-
+				//
+				mistakes = 0;
+				
 				//check start of patient for virus
 				for(var i = 0; i < virus.length; i++) {
-					console.log(virus[i], 'to', patient[i]);
-					if(patient[i] && virus[i] != patient[i]) {
+					
+					if(virus[i] != patient[i]) {
+						
+						//not long enough to contain virus
+						if(patient[i] == 'undefined') {
+							break;
+						}
+						
 						mistakes = mistakes + 1;
 					}
 				}
 
-				if(mistakes < 1) {
-					console.log('***this was a match');
+				if(mistakes <= 1) {
 					indices.push(index);
 				}
 
+				//remove first letter and check again
 				patient = patient.slice(1);
 				index = index + 1;
-				mistakes = 0;
 				
 			}
 
-			console.log(indices);
 			if(indices.length == 0) {
 				return 'No Match!';
 			}
 
-			console.log(indices);
-			return indices.sort((a, b) => a < b).join(' ');
+			const result = indices.sort((a, b) => a > b).join(' ');
+
+			return result;
 
 	}
 
-	let result = virusIndices('abbab', 'ba');
-	//console.log(result);
+	
+	const test0a = virusIndices('aabaa', 'aaaab');
+	const test0b = virusIndices('bbabbaaaabababbaaba', 'aaababbaaaaaa');
+	const test0c = virusIndices('babbbabaa', 'bbaba');
+	const test0d = virusIndices('baaaaababbaa', 'abbab');
+	const test0e = virusIndices('ababbaabbbabaababaaaabaa', 'aaabaababbbabbabbaababbb');
+	const test0f = virusIndices('aaaabaaaaabbaaaa', 'aa');
+	const test0g = virusIndices('abababaaaaabaaaaba', 'ababba');
+	const test0h = virusIndices('aabbbababaabaaa', 'baabababbaaaaa');
+	const test0i = virusIndices('bababa', 'a');
+	const test0j = virusIndices('bbbbabaaababaabbaab', 'baaaaab');
 
-	result = virusIndices('cgatcg', 'gc');
-	console.log(result);
-	//console.log( virusIndices('hello', 'world') );
+	console.log(test0a);
+	console.log(test0b);
+	console.log(test0c);
+	console.log(test0d);
+	console.log(test0e);
+	console.log(test0f);
+	console.log(test0g);
+	console.log(test0h);
+	console.log(test0i);
+	console.log(test0j);
 
-	result = virusIndices('aardvark', 'ab');
-	console.log(result);
+
 </script>
 
 </body>
