@@ -1,4 +1,4 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>PDF Viewer</title>
@@ -7,13 +7,25 @@
 <body>
 
 <script>
-function designerPdfViewer(h, word) {
+function designerPdfViewer(heights, word) {
 	
+	var maxHeight = 0;
+	
+	for(var i = 0; i < word.length; i++) {
+		var height = heights[word[i].charCodeAt(0) - 97];
+		if(height > maxHeight) {
+			maxHeight = height;
+		}
+	}
+
+	console.log(maxHeight * word.length);
+
+
 }
 
 //expected: 28
 const sample1 = [[1, 3, 1, 3, 1, 4, 1, 3, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7], 'zaba'];
-designerPdf(sample1[0], sample1[1]);
+designerPdfViewer(sample1[0], sample1[1]);
 
 
 </script>
