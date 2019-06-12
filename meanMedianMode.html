@@ -29,7 +29,6 @@ function printMeanMedianMode(n) {
 		}
 
 		if(mode == -1) {
-			console.log('mode is not defined');
 			mode = number;
 		}
 
@@ -39,10 +38,18 @@ function printMeanMedianMode(n) {
 
 	const mean = sum / numbers.length;
 
+	//find median
+	const half = Math.floor(numbers.length/2);
 
-	console.log('mean', mean);
-	console.log('mode', mode);
+	if(numbers.length % 2) {
+		median = numbers[half];
+	} else {
+		median = (numbers[half-1] + numbers[half]) / 2.0;
+	}
 
+	console.log(mean);
+	console.log(median);
+	console.log(mode);
 
 }
 
